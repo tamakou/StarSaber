@@ -7,19 +7,23 @@
 
 import SwiftUI
 import RealityKit
-import RealityKitContent
 
 struct ImmersiveView: View {
 
+    @Environment(AppModel.self) private var appModel
+    @State private var coordinator: BattleImmersiveCoordinator?
+    @State private var lastUpdateTime = Date()
+
     var body: some View {
         RealityView { content in
-            // Add the initial RealityKit content
-            if let immersiveContentEntity = try? await Entity(named: "Immersive", in: realityKitContentBundle) {
-                content.add(immersiveContentEntity)
-
-                // Put skybox here.  See example in World project available at
-                // https://developer.apple.com/
-            }
+            let coordinator = coordinator ?? BattleImmersiveCoordinator(gameSession: appModel.gameSession)
+            self.coordinator = coordinator
+            await coordinator.configureScene(on: content)
+        } update: { _ in
+            let now = Date()
+            let delta = now.timeIntervalSince(lastUpdateTime)
+            coordinator?.updateScene(deltaTime: delta)
+            lastUpdateTime = now
         }
     }
 }

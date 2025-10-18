@@ -11,37 +11,79 @@ import RealityKitContent
 
 struct ContentView: View {
 
-    @State private var enlarge = false
+    @Environment(AppModel.self) private var appModel
+    @State private var showDebugPanel = true
 
     var body: some View {
-        RealityView { content in
-            // Add the initial RealityKit content
-            if let scene = try? await Entity(named: "Scene", in: realityKitContentBundle) {
-                content.add(scene)
+        @Bindable var session = appModel.gameSession
+
+        ZStack {
+            RealityView { content in
+                if let scene = try? await Entity(named: "Scene", in: realityKitContentBundle) {
+                    content.add(scene)
+                }
             }
-        } update: { content in
-            // Update the RealityKit content when SwiftUI state changes
-            if let scene = content.entities.first {
-                let uniformScale: Float = enlarge ? 1.4 : 1.0
-                scene.transform.scale = [uniformScale, uniformScale, uniformScale]
+            .ignoresSafeArea()
+
+            VStack {
+                HStack {
+                    HUDOverlayView(session: session)
+                    Spacer()
+                }
+                Spacer()
+            }
+
+            if session.phase == .tutorial {
+                TutorialOverlayView(session: session) {
+                    appModel.requestWaveStart()
+                }
+            }
+
+            if session.phase == .results || session.phase == .victory || session.phase == .defeat {
+                ResultsOverlayView(session: session) {
+                    appModel.requestRestart()
+                }
+            }
+
+            VStack {
+                Spacer()
+                HStack {
+                    if showDebugPanel {
+                        DebugLogPanelView(session: session)
+                    }
+                    Spacer()
+                }
+                .padding()
             }
         }
-        .gesture(TapGesture().targetedToAnyEntity().onEnded { _ in
-            enlarge.toggle()
-        })
+        .task {
+            appModel.prepareForLaunch()
+        }
         .toolbar {
             ToolbarItemGroup(placement: .bottomOrnament) {
-                VStack (spacing: 12) {
-                    Button {
-                        enlarge.toggle()
-                    } label: {
-                        Text(enlarge ? "Reduce RealityView Content" : "Enlarge RealityView Content")
-                    }
-                    .animation(.none, value: 0)
-                    .fontWeight(.semibold)
-
-                    ToggleImmersiveSpaceButton()
+                Toggle(isOn: $showDebugPanel) {
+                    Label("Debug Log", systemImage: showDebugPanel ? "dot.scope.fill" : "dot.scope")
                 }
+                .toggleStyle(.button)
+                .fontWeight(.semibold)
+
+                Button {
+                    if let target = session.activeEnemies.first {
+                        session.applyDamageToEnemy(enemyID: target.id, amount: session.config.player.saberDamage)
+                    }
+                } label: {
+                    Label("ライトセイバー攻撃", systemImage: "flame.fill")
+                }
+                .disabled(session.activeEnemies.isEmpty)
+
+                Button {
+                    session.triggerForcePush()
+                } label: {
+                    Label("フォース", systemImage: "sparkles")
+                }
+                .disabled(!session.canTriggerForcePush())
+
+                ToggleImmersiveSpaceButton()
             }
         }
     }
