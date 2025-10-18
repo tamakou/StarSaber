@@ -38,9 +38,9 @@
 - **UI 演出**: 戦況に応じて UI カラーを変更。被弾時に画面フラッシュ効果。
 
 ## 7. 技術スタック
-- **言語/フレームワーク**: Swift 5.9、SwiftUI、RealityKit、ARKit / Vision Framework（ハンドトラッキング）、GameplayKit（AI ステート管理）。
+- **言語/フレームワーク**: Swift 6.2、SwiftUI、RealityKit、ARKit / Vision Framework（ハンドトラッキング）、GameplayKit（AI ステート管理）。
 - **アセット制作**: Reality Composer Pro、Blender（外部で軽量モデル調整）。
-- **ビルド環境**: Xcode 15.2、visionOS 26 SDK、ターゲットデプロイメント visionOS 26。
+- **ビルド環境**: Xcode 16、visionOS 26 SDK、ターゲットデプロイメント visionOS 26。
 - **補助ライブラリ**: Combine（ゲームステートのリアクティブ管理）、SceneUnderstanding（空間メッシュ取得）。
 - **開発ツール**: Git、GitHub Issues/Projects、TestFlight（後続配布）。
 
