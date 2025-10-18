@@ -6,7 +6,7 @@
 - **最新のApple公式ドキュメント・WWDC情報・VisionOS SDK仕様**を常にリサーチして反映すること。  
 - **Swift 6.2 / visionOS 26 / Xcode 16** 環境で動作するコードのみを生成する。  
 - **爆速開発を最優先**としつつ、クラッシュ・非推奨APIの使用を避け、VisionOSガイドラインに準拠する。  
-
+- **必ずweb検索も行い最新の情報を常に取得**すること。  
 ---
 
 ### 📁 ファイル運用ルール
@@ -19,7 +19,7 @@
 ---
 
 ### 🧩 VisionOS開発ルール
-- プロジェクトテンプレートは **「Immersive App」** を基本とし、現実空間との融合（Mixed Reality）を前提に設計。  
+- プロジェクトテンプレートは **「App」** を基本とし、現実空間との融合（Mixed Reality）を前提に設計。  
 - **RealityKit + SwiftUI + Metal** を優先使用。SceneKitやARKitの旧APIは使用しない。  
 - **Input System**（手、コントローラ、視線、音声）は最新の `RealityKit.Input` API 仕様を使用。  
 - **Spatial Audio**、**光エフェクト**、**物理シミュレーション**を使用する際はパフォーマンス優先で設計。  
