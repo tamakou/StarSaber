@@ -1,5 +1,5 @@
 //
-//  AppModel.swift
+//  AppModel.swif
 //  StarSaber
 //
 //  Created by tamakou on 2025/10/19.
