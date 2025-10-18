@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9A967A7D2EA3F0BE004F434C /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = 9A967A7C2EA3F0BE004F434C /* RealityKitContent */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -22,7 +21,6 @@
 
 /* Begin PBXFileReference section */
 		9A967A772EA3F0BE004F434C /* StarSaber.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StarSaber.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		9A967A7B2EA3F0BE004F434C /* RealityKitContent */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RealityKitContent; sourceTree = "<group>"; };
 		9A967A8F2EA3F0C0004F434C /* StarSaberTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StarSaberTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -57,7 +55,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9A967A7D2EA3F0BE004F434C /* RealityKitContent in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,7 +72,6 @@
 			isa = PBXGroup;
 			children = (
 				9A967A792EA3F0BE004F434C /* StarSaber */,
-				9A967A7A2EA3F0BE004F434C /* Packages */,
 				9A967A922EA3F0C0004F434C /* StarSaberTests */,
 				9A967A782EA3F0BE004F434C /* Products */,
 			);
@@ -88,14 +84,6 @@
 				9A967A8F2EA3F0C0004F434C /* StarSaberTests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		9A967A7A2EA3F0BE004F434C /* Packages */ = {
-			isa = PBXGroup;
-			children = (
-				9A967A7B2EA3F0BE004F434C /* RealityKitContent */,
-			);
-			path = Packages;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -118,7 +106,6 @@
 			);
 			name = StarSaber;
 			packageProductDependencies = (
-				9A967A7C2EA3F0BE004F434C /* RealityKitContent */,
 			);
 			productName = StarSaber;
 			productReference = 9A967A772EA3F0BE004F434C /* StarSaber.app */;
@@ -473,11 +460,5 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		9A967A7C2EA3F0BE004F434C /* RealityKitContent */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = RealityKitContent;
-		};
-/* End XCSwiftPackageProductDependency section */
-	};
-	rootObject = 9A967A6F2EA3F0BE004F434C /* Project object */;
+		rootObject = 9A967A6F2EA3F0BE004F434C /* Project object */;
 }
