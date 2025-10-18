@@ -2,9 +2,9 @@
 
 ## 1. プロジェクト概要
 - **目的**: Apple Vision Pro 向けの一人用ライトセイバーバトル体験を提供し、直感的なジェスチャ操作と没入感を重視したショートプレイゲームを短期間で完成させる。
-- **対応デバイス**: Apple Vision Pro（visionOS 1.0 / SDK 1.0、ビルド 26 系）。
+- **対応デバイス**: Apple Vision Pro（visionOS 26 / SDK 26）。
 - **ターゲットユーザー**: SF/スターウォーズ風の演出を好み、最新デバイスでの新規体験を求めるカジュアルゲーマー。
-- **ビジネスゴール**: 個人開発作品としてのポートフォリオ公開。visionOS 1.0 対応の没入型タイトル実装ノウハウを蓄積する。
+- **ビジネスゴール**: 個人開発作品としてのポートフォリオ公開。visionOS 26 対応の没入型タイトル実装ノウハウを蓄積する。
 
 ## 2. MVP スコープ
 - シングルウェーブ制（1～2 分想定）のバトルシナリオ。
@@ -40,7 +40,7 @@
 ## 7. 技術スタック
 - **言語/フレームワーク**: Swift 5.9、SwiftUI、RealityKit、ARKit / Vision Framework（ハンドトラッキング）、GameplayKit（AI ステート管理）。
 - **アセット制作**: Reality Composer Pro、Blender（外部で軽量モデル調整）。
-- **ビルド環境**: Xcode 15.2、visionOS 1.0 SDK（ビルド 26）、ターゲットデプロイメント visionOS 1.0。
+- **ビルド環境**: Xcode 15.2、visionOS 26 SDK、ターゲットデプロイメント visionOS 26。
 - **補助ライブラリ**: Combine（ゲームステートのリアクティブ管理）、SceneUnderstanding（空間メッシュ取得）。
 - **開発ツール**: Git、GitHub Issues/Projects、TestFlight（後続配布）。
 
