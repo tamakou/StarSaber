@@ -22,8 +22,12 @@ class AppModel {
     var immersiveSpaceState = ImmersiveSpaceState.closed
     let gameSession: GameSessionModel
 
-    init(gameSession: GameSessionModel = GameSessionModel()) {
+    init(gameSession: GameSessionModel) {
         self.gameSession = gameSession
+    }
+
+    convenience init() {
+        self.init(gameSession: GameSessionModel())
     }
 
     func prepareForLaunch() {

@@ -16,13 +16,22 @@ struct ImmersiveView: View {
 
     var body: some View {
         RealityView { content in
-            let coordinator = coordinator ?? BattleImmersiveCoordinator(gameSession: appModel.gameSession)
-            self.coordinator = coordinator
-            await coordinator.configureScene(on: content)
+            let controller = coordinator ?? BattleImmersiveCoordinator(gameSession: appModel.gameSession)
+            if coordinator == nil {
+                coordinator = controller
+            }
+
+            if controller.rootAnchor.parent == nil {
+                content.add(controller.rootAnchor)
+            }
+
+            await controller.prepareSceneIfNeeded()
         } update: { _ in
             let now = Date()
             let delta = now.timeIntervalSince(lastUpdateTime)
-            coordinator?.updateScene(deltaTime: delta)
+            if delta > 0 {
+                coordinator?.updateScene()
+            }
             lastUpdateTime = now
         }
     }
